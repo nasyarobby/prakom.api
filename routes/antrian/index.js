@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const { sequelize } = require("./../../models");
 
 module.exports = (server) => {
-  server.get("/antrian", checkToken, async (req, res, next) => {
+  server.get("/api/antrian", checkToken, async (req, res, next) => {
     const { token } = req.query;
     if (token !== undefined) {
       const data = jwt.decode(token);
@@ -27,7 +27,7 @@ module.exports = (server) => {
     }
   });
 
-  server.get("/antrian/upcoming", checkToken, async (req, res, next) => {
+  server.get("/api/antrian/upcoming", checkToken, async (req, res, next) => {
     const { npwp } = req.user;
     const { antrian, Sequelize, sequelize } = models;
     const upcoming = await antrian.findAll({
@@ -52,7 +52,7 @@ module.exports = (server) => {
     );
   });
 
-  server.get("/antrian/past", checkToken, async (req, res, next) => {
+  server.get("/api/antrian/past", checkToken, async (req, res, next) => {
     const { npwp } = req.user;
     const { antrian, Sequelize, sequelize } = models;
     const past = await antrian.findAll({
@@ -77,40 +77,45 @@ module.exports = (server) => {
     );
   });
 
-  server.post("/antrian", checkToken, checkParams, async (req, res, next) => {
-    const kode = getRndInteger(100000, 999999);
+  server.post(
+    "/api/antrian",
+    checkToken,
+    checkParams,
+    async (req, res, next) => {
+      const kode = getRndInteger(100000, 999999);
 
-    const {
-      nik,
-      nama,
-      telepon,
-      email,
-      kodeKpp,
-      jadwalMulai,
-      jadwalSelesai,
-      layananId,
-      detilLayanan,
-    } = req.body;
-    const data = {
-      npwp: req.user.npwp,
-      namaWp: req.user.nama,
-      nik,
-      nama,
-      telepon,
-      email,
-      kodeKpp,
-      jadwalMulai: moment(jadwalMulai).toDate(),
-      jadwalSelesai: moment(jadwalSelesai).toDate(),
-      layananId,
-      detilLayanan,
-      kode,
-    };
-    const insert = await models.antrian.create(data);
-    res.jsend.success({
-      ...insert,
-      qr: createQr(insert),
-    });
-  });
+      const {
+        nik,
+        nama,
+        telepon,
+        email,
+        kodeKpp,
+        jadwalMulai,
+        jadwalSelesai,
+        layananId,
+        detilLayanan,
+      } = req.body;
+      const data = {
+        npwp: req.user.npwp,
+        namaWp: req.user.nama,
+        nik,
+        nama,
+        telepon,
+        email,
+        kodeKpp,
+        jadwalMulai: moment(jadwalMulai).toDate(),
+        jadwalSelesai: moment(jadwalSelesai).toDate(),
+        layananId,
+        detilLayanan,
+        kode,
+      };
+      const insert = await models.antrian.create(data);
+      res.jsend.success({
+        ...insert,
+        qr: createQr(insert),
+      });
+    }
+  );
 };
 
 function createQr(data) {

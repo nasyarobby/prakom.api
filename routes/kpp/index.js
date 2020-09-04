@@ -1,7 +1,7 @@
 const models = require("./../../models");
 
 module.exports = (server) => {
-  server.get("/kpp/:kode", async (req, res, next) => {
+  server.get("/api/kpp/:kode", async (req, res, next) => {
     const kode = req.params.kode;
     const { kpp, sequelize, Sequelize } = models;
     const predicates = [{ kode }];

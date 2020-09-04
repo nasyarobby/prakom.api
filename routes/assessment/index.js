@@ -2,7 +2,7 @@ const models = require("./../../models");
 const checkToken = require("./../checkToken");
 
 module.exports = (server) => {
-  server.get("/assessment/:nik", checkToken, async (req, res, next) => {
+  server.get("/api/assessment/:nik", checkToken, async (req, res, next) => {
     const nik = req.params.nik;
     const date = req.query.date;
     const { assessment, sequelize, Sequelize } = models;
