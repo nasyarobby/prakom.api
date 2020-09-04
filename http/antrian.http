@@ -1,0 +1,24 @@
+###
+POST http://localhost:8181/antrian HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+Content-Type: application/json
+
+{
+    "nik": "637141432",
+    "nama": "Nass",
+    "telepon": "021-4387294234",
+    "email": "nasayrobbY@gmail.com",
+    "jadwalMulai": {"years": "2020", "month": "01", "date": "23", "hours": 13, "minutes": 0},
+    "jadwalSelesai": {"years": "2020", "month": "01", "date": "23", "hours": 13, "minutes": 30},
+    "kodeKpp": "731",
+    "layananId": 1,
+    "detilLayanan": "Hello"
+}
+
+####
+GET http://localhost:8181/antrian?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibnB3cCI6IjAxMjIyMzMzNDczMTAwMCIsImtwcCI6IjczMSIsImtvZGUiOjM0MDA0NSwiaWF0IjoxNTk5MjM2MTI3fQ.60PgB4WQkdl53hGK-2FvM4_Vm1i2GRRYLODZ30f4S3I HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+
+###
+GET http://localhost:8181/antrian/upcoming HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w

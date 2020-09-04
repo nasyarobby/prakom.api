@@ -1,0 +1,7 @@
+###
+GET http://localhost:8181/kpp/731 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+
+###
+GET http://localhost:8181/layanan HTTP/1.1

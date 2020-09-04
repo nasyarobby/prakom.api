@@ -1,0 +1,26 @@
+### post
+POST  http://localhost:8181/assessment HTTP/1.1
+Content-Type: application/json
+
+{
+}
+
+### post
+POST  http://localhost:8181/assessment HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+{
+    "nik": "6371041611870008",
+    "data": "Hello",
+    "hasil": "rendah"
+}
+
+###
+POST  http://localhost:8181/assessment HTTP/1.1
+Content-Type: application/json
+Origin: http://localhost:8080
+
+###
+GET http://localhost:8181/assessment/6371041611870008?date=2020-09-04 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
