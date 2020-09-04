@@ -22,7 +22,7 @@ module.exports = (server) => {
   });
 
   server.post(
-    "/assessment",
+    "/api/assessment",
     checkToken,
     assessmentCheckParams,
     async (req, res, next) => {
