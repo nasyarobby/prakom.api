@@ -1,0 +1,8 @@
+####
+POST http://localhost:8181/api/pegawai/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "nip": "060010001",
+    "password": "123456"
+}
