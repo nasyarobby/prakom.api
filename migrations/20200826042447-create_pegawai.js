@@ -15,7 +15,6 @@ module.exports = {
       },
       nama: {
         allowNull: false,
-        primaryKey: true,
         type: Sequelize.DataTypes.STRING,
       },
       jabatan: {
