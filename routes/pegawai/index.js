@@ -25,4 +25,21 @@ module.exports = (server) => {
       });
     }
   });
+
+  server.get("/api/pegawai/nip/:nip", async (req, res, next) => {
+    const { nip } = req.params;
+
+    const user = await models.pegawai.findOne({
+      where: { nipPendek: nip },
+      include: [
+        { model: models.loket, include: [models.kpp, models.antrian] },
+        models.kpp,
+      ],
+    });
+    if (user) {
+      return res.jsend.success(user);
+    } else {
+      return res.jsend.fail("not found");
+    }
+  });
 };

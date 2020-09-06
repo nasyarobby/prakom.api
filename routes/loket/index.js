@@ -51,6 +51,24 @@ module.exports = (server) => {
   );
 
   server.post(
+    "/api/loket/:kpp/:nomor/keluar",
+    checkToken,
+    async (req, res, next) => {
+      const { user } = req;
+      const { kpp, nomor } = req.params;
+      const { loket } = models;
+
+      const exist = await loket.findOne({
+        where: { kodeKpp: kpp, nomor },
+        include: ["kpp", "pegawai", "antrian"],
+      });
+      exist.nip = null;
+      await exist.save();
+      res.jsend.success({ loket: exist });
+    }
+  );
+
+  server.post(
     "/api/loket/:kpp/:nomorLoket/pilih-antrian",
     checkToken,
     async (req, res, next) => {

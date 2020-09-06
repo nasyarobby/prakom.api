@@ -6,3 +6,6 @@ Content-Type: application/json
     "nip": "060010001",
     "password": "123456"
 }
+
+####
+GET http://localhost:8181/api/pegawai/nip/060010001 HTTP/1.1

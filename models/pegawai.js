@@ -7,7 +7,16 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {}
+    static associate(models) {
+      const { antrian, pegawai, kpp, loket } = models;
+      pegawai.antrian = pegawai.hasOne(loket, {
+        foreignKey: "nip",
+      });
+
+      pegawai.kpp = pegawai.belongsTo(kpp, {
+        foreignKey: "kpp_kode",
+      });
+    }
   }
   pegawai.init(
     {
