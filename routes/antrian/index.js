@@ -3,29 +3,38 @@ const checkToken = require("../checkToken");
 var moment = require("moment"); // require
 require("moment/locale/id");
 moment.locale("id");
-moment().format();
 const jwt = require("jsonwebtoken");
-const { sequelize } = require("./../../models");
 
 module.exports = (server) => {
   server.get("/api/antrian", checkToken, async (req, res, next) => {
-    const { token } = req.query;
+    const { token, id, kpp, kode } = req.query;
+    console.log(id, kpp, kode);
     if (token !== undefined) {
       const data = jwt.decode(token);
       if (data) {
-        const { npwp, id, kpp: kodeKpp, kode } = data;
-        const { antrian, sequelize, Sequelize } = models;
-        const exist = await antrian.findOne({
-          where: { id, npwp, kodeKpp, kode },
-          include: [models.layanan, models.kpp],
-        });
-        if (exist) res.jsend.success(exist);
+        const { id, kpp, kode } = data;
+        const exist = await getAntrianByKeys(id, kpp, kode);
+        res.jsend.success(exist);
       } else {
         res.jsend.error("token is invalid.");
       }
+    } else if (id && kpp && kode) {
+      const exist = await getAntrianByKeys(id, kpp, kode);
+      res.jsend.success(exist);
     } else {
+      res.jsend.fail("Token or some keys are not found.");
     }
   });
+
+  async function getAntrianByKeys(id, kodeKpp, kode) {
+    const { antrian } = models;
+    const exist = await antrian.findOne({
+      where: { id, kodeKpp, kode },
+      include: [models.layanan, models.kpp],
+    });
+    if (exist) return { ...exist.dataValues, qr: createQr(exist.dataValues) };
+    else return exist;
+  }
 
   server.get("/api/antrian/upcoming", checkToken, async (req, res, next) => {
     const { npwp } = req.user;
@@ -116,6 +125,54 @@ module.exports = (server) => {
       });
     }
   );
+
+  server.post("/api/antrian/update", checkToken, async (req, res, next) => {
+    const { id, kode, data } = req.body;
+    const obj = await models.antrian.findOne({ where: { id, kode } });
+    if (obj) {
+      Object.assign(obj, data);
+      await obj.save();
+      res.jsend.success({
+        ...obj.dataValues,
+        qr: createQr(obj.dataValues),
+      });
+    } else {
+      res.jsend.fail("Not found.");
+    }
+  });
+
+  server.get("/api/antrian-kpp", checkToken, async (req, res, next) => {
+    const { user } = req;
+    const { antrian, Sequelize, sequelize } = models;
+
+    const rows = await antrian.findAll({
+      where: {
+        [Sequelize.Op.and]: [
+          { kodeKpp: user.kppKode },
+          { realMulai: { [Sequelize.Op.eq]: null } },
+          { realSelesai: { [Sequelize.Op.eq]: null } },
+          sequelize.where(
+            sequelize.fn("DATE", sequelize.col("antrian.waktu_kedatangan")),
+            {
+              [Sequelize.Op.eq]: sequelize.fn("CURDATE"),
+            }
+          ),
+          sequelize.where(sequelize.col("loket.nomor_antrian"), {
+            [Sequelize.Op.eq]: null,
+          }),
+        ],
+      },
+      include: [
+        models.layanan,
+        models.kpp,
+        {
+          model: models.loket,
+        },
+      ],
+    });
+
+    res.jsend.success({ antrian: rows });
+  });
 };
 
 function createQr(data) {

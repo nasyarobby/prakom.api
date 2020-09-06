@@ -15,10 +15,34 @@ Content-Type: application/json
     "detilLayanan": "Hello"
 }
 
-####
-GET http://localhost:8181/antrian?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibnB3cCI6IjAxMjIyMzMzNDczMTAwMCIsImtwcCI6IjczMSIsImtvZGUiOjM0MDA0NSwiaWF0IjoxNTk5MjM2MTI3fQ.60PgB4WQkdl53hGK-2FvM4_Vm1i2GRRYLODZ30f4S3I HTTP/1.1
+###
+POST http://localhost:8181/api/antrian/update HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+Content-Type: application/json
+
+{
+    "id": 2,
+    "kode":789789,
+    "data" :{
+        "waktuKedatangan": "2020-09-06T20:00:00.000Z"
+    }
+}
+
+####
+GET http://localhost:8181/api/antrian?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibnB3cCI6IjAxMjIyMzMzNDczMTAwMCIsImtwcCI6IjczMSIsImtvZGUiOjM0MDA0NSwiaWF0IjoxNTk5MjM2MTI3fQ.60PgB4WQkdl53hGK-2FvM4_Vm1i2GRRYLODZ30f4S3I HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+
+####
+GET http://localhost:8181/api/antrian?id=1&kode=789789&kpp=028 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+
+
 
 ###
 GET http://localhost:8181/antrian/upcoming HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJucHdwIjoiMDEyMjIzMzM0NzMxMDAwIiwibmFtYSI6IlBUIEtBWVUgU0VKQVRJIFBFUk1BSSIsImtvZGVLcHBBZG0iOiI3MzEiLCJpYXQiOjE1OTg4Mzc1OTgsImV4cCI6MTU5ODg0NDc5OH0.q_LZLOL3j9lBYwZp5GAiBWkFZIOzTgREHAgEdVq1K2w
+
+###
+GET http://localhost:8181/api/antrian-kpp HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaXBQZW5kZWsiOiIwNjAwMTAwMDEiLCJuaXBQYW5qYW5nIjoiMTk3MDAxMDEyMDA1MDExMDAwMSIsIm5hbWEiOiJBUFJJQU5UTyIsImphYmF0YW4iOiJwZWxha3NhbmEiLCJzdGF0dXMiOnRydWUsInJvbGUiOiJwZWdhd2FpIiwia3BwS29kZSI6IjAyOCIsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEF0IjpudWxsLCJpYXQiOjE1OTkyOTk0NTJ9.PoclcRH47ysE7_5mA8FwRwHwIa5Pw1GzGXcFawKwxF0

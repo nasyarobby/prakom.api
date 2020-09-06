@@ -8,13 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      const { layanan, antrian, kpp } = models;
+      const { layanan, antrian, kpp, loket } = models;
       antrian.layanan = antrian.belongsTo(layanan, {
         foreignKey: "layananId",
       });
 
       antrian.kpp = antrian.belongsTo(kpp, {
         foreignKey: "kodeKpp",
+      });
+
+      antrian.loket = antrian.hasOne(loket, {
+        foreignKey: "nomor_antrian",
       });
     }
   }

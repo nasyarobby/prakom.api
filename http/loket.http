@@ -1,0 +1,27 @@
+###
+
+GET http://localhost:8181/api/loket/028 HTTP/1.1
+Content-Type: application/json###
+
+###
+GET http://localhost:8181/api/loket/028/1 HTTP/1.1
+Content-Type: application/json
+
+###
+POST http://localhost:8181/api/loket/028/1/tempati HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaXBQZW5kZWsiOiIwNjAwMTAwMDEiLCJuaXBQYW5qYW5nIjoiMTk3MDAxMDEyMDA1MDExMDAwMSIsIm5hbWEiOiJBUFJJQU5UTyIsImphYmF0YW4iOiJwZWxha3NhbmEiLCJzdGF0dXMiOnRydWUsInJvbGUiOiJwZWdhd2FpIiwia3BwS29kZSI6IjAyOCIsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEF0IjpudWxsLCJpYXQiOjE1OTkyOTk0NTJ9.PoclcRH47ysE7_5mA8FwRwHwIa5Pw1GzGXcFawKwxF0
+
+###
+POST http://localhost:8181/api/loket/028/1/pilih-antrian HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaXBQZW5kZWsiOiIwNjAwMTAwMDEiLCJuaXBQYW5qYW5nIjoiMTk3MDAxMDEyMDA1MDExMDAwMSIsIm5hbWEiOiJBUFJJQU5UTyIsImphYmF0YW4iOiJwZWxha3NhbmEiLCJzdGF0dXMiOnRydWUsInJvbGUiOiJwZWdhd2FpIiwia3BwS29kZSI6IjAyOCIsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEF0IjpudWxsLCJpYXQiOjE1OTkyOTk0NTJ9.PoclcRH47ysE7_5mA8FwRwHwIa5Pw1GzGXcFawKwxF0
+
+{
+    "nomorAntrian": 3
+}
+
+###
+POST http://localhost:8181/api/loket/028/1/kembalikan-wp HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaXBQZW5kZWsiOiIwNjAwMTAwMDEiLCJuaXBQYW5qYW5nIjoiMTk3MDAxMDEyMDA1MDExMDAwMSIsIm5hbWEiOiJBUFJJQU5UTyIsImphYmF0YW4iOiJwZWxha3NhbmEiLCJzdGF0dXMiOnRydWUsInJvbGUiOiJwZWdhd2FpIiwia3BwS29kZSI6IjAyOCIsImNyZWF0ZWRBdCI6bnVsbCwidXBkYXRlZEF0IjpudWxsLCJpYXQiOjE1OTkyOTk0NTJ9.PoclcRH47ysE7_5mA8FwRwHwIa5Pw1GzGXcFawKwxF0
