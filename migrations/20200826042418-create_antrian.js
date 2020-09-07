@@ -69,6 +69,10 @@ module.exports = {
         type: Sequelize.DataTypes.TEXT,
       },
       kode: { allowNull: false, type: Sequelize.DataTypes.STRING(10) },
+      evaluasi: {
+        allowNull: false,
+        type: Sequelize.DataTypes.INTEGER.UNSIGNED,
+      },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE,
     });

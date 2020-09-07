@@ -36,6 +36,31 @@ module.exports = (server) => {
     else return exist;
   }
 
+  server.get("/api/antrian/slot", async (req, res, next) => {
+    const { antrian, Sequelize, sequelize } = models;
+    const { kpp, tanggal } = req.query;
+    const slot = await antrian.findAll({
+      attributes: [
+        "jadwalMulai",
+        "jadwalSelesai",
+        [sequelize.fn("COUNT", sequelize.col("jadwal_mulai")), "jumlah"],
+      ],
+      where: {
+        [Sequelize.Op.and]: [
+          { kodeKpp: kpp },
+          sequelize.where(
+            sequelize.fn("DATE", sequelize.col("antrian.jadwal_mulai")),
+            {
+              [Sequelize.Op.eq]: tanggal,
+            }
+          ),
+        ],
+      },
+      group: ["jadwalMulai", "jadwalSelesai"],
+    });
+    res.jsend.success({ tanggal: moment(tanggal).format("YYYY-MM-DD"), slot });
+  });
+
   server.get("/api/antrian/upcoming", checkToken, async (req, res, next) => {
     const { npwp } = req.user;
     const { antrian, Sequelize, sequelize } = models;
