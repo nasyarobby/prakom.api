@@ -6,6 +6,11 @@ const wajibpajak = [
   {
     kode_kpp: "028",
     nomor: 1,
+    nip: "060010003",
+  },
+  {
+    kode_kpp: "028",
+    nomor: 2,
   },
   {
     kode_kpp: "028",
@@ -14,10 +19,6 @@ const wajibpajak = [
   {
     kode_kpp: "028",
     nomor: 4,
-  },
-  {
-    kode_kpp: "028",
-    nomor: 5,
   },
 ];
 
