@@ -137,8 +137,14 @@ module.exports = (server) => {
         telepon,
         email,
         kodeKpp,
-        jadwalMulai: moment(jadwalMulai).toISOString(),
-        jadwalSelesai: moment(jadwalSelesai).toISOString(),
+        jadwalMulai: moment({
+          ...jadwalMulai,
+          hours: jadwalMulai.hours - 7,
+        }).toISOString(),
+        jadwalSelesai: moment({
+          ...jadwalSelesai,
+          hours: jadwalSelesai.hours - 7,
+        }).toISOString(),
         layananId,
         detilLayanan,
         kode,
