@@ -87,8 +87,8 @@ module.exports = {
       ...wajibpajak.map((wp) => {
         return {
           ...wp,
-          jadwal_mulai: moment("2020-09-07 14:00:00").toDate(),
-          jadwal_selesai: moment("2020-09-07 14:30:00").toDate(),
+          jadwal_mulai: moment("2020-09-08 14:00:00").toDate(),
+          jadwal_selesai: moment("2020-09-08 14:30:00").toDate(),
           layanan_id: getRndInteger(1, 3),
           detil_layanan: "Permintaan layanan untuk wajib pajak.",
           kode: 789789,
@@ -97,8 +97,8 @@ module.exports = {
       ...wajibpajak.slice(0, 5).map((wp) => {
         return {
           ...wp,
-          jadwal_mulai: moment("2020-09-08 08:00:00").toDate(),
-          jadwal_selesai: moment("2020-09-08 08:30:00").toDate(),
+          jadwal_mulai: moment("2020-09-09 08:00:00").toDate(),
+          jadwal_selesai: moment("2020-09-09 08:30:00").toDate(),
           layanan_id: getRndInteger(1, 3),
           detil_layanan: "Permintaan layanan untuk wajib pajak.",
           kode: 789789,
