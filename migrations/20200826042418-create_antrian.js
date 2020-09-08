@@ -70,7 +70,7 @@ module.exports = {
       },
       kode: { allowNull: false, type: Sequelize.DataTypes.STRING(10) },
       evaluasi: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DataTypes.INTEGER.UNSIGNED,
       },
       created_at: Sequelize.DataTypes.DATE,
